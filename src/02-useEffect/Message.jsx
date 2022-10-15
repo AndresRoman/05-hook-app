@@ -3,11 +3,16 @@ import { useEffect } from "react"
 export const Message = () => {
 
     useEffect(() => {
-        console.log('mesagge mounted')
+
+        const onMouseMove = ({ x, y }) => {
+            const coords = { x, y }
+            console.log(coords)
+        }
+
+        window.addEventListener('mousemove', onMouseMove)
 
         return () => {
-            console.log('mesagge unmounted')
-
+            window.removeEventListener('mousemove', onMouseMove)
         }
     }, [])
 
